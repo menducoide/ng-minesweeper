@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MenuItem } from "src/app/core/models/common/menu-item";
+import { MenuItem } from "src/app/core/models/menu-item";
 import { faBomb } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: "app-layout",

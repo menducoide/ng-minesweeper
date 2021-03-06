@@ -7,18 +7,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutComponent } from './views/layout/layout.component';
 import { MaterialModule } from './shared/material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GameBoardComponent } from './views/game-board/game-board.component';
+import { BoardComponent } from './components/board/board.component';
+import { BoardCellComponent } from './components/board-cell/board-cell.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
+    GameBoardComponent,
+    BoardComponent,
+    BoardCellComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
