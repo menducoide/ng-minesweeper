@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSidenavModule,
     MatListModule,
     MatGridListModule,
+    MatMenuModule,
    ],
   exports: [
      MatToolbarModule,   
@@ -25,6 +27,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
      MatSidenavModule,
      MatListModule,
      MatGridListModule,
+     MatMenuModule,
   ],
   providers: [],
 })

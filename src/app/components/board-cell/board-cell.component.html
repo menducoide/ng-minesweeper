@@ -1,3 +1,7 @@
-<div class="board-cell" [ngStyle]="{'width': width,'height': height}">
-
+<div class="board-cell"
+(contextmenu)="onRightClick($event)"
+ [ngStyle]="{'width': width,'height': height}">
+    <fa-icon *ngIf="cell.hasBomb" [icon]="faBomb" size="iconSize"></fa-icon>
+    <fa-icon *ngIf="cell.hasFlag && !cell.selected" [icon]="faFlag" size="iconSize"></fa-icon>
+    <label>{{cell.arroundBombs}}</label>
 </div>
