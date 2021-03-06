@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="drawer.toggle()" aria-label="">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{ title }}</span>
+</mat-toolbar>
+<mat-drawer-container class="layout-container" [hasBackdrop]="true">
+  <mat-drawer class="layout-sidenav" #drawer [mode]="'side'">
+    <mat-list>
+      <mat-list-item *ngFor="let menuItem of menuItems" [routerLink]="[menuItem.url]" [routerLinkActive]="['active-link']">
+         <fa-icon mat-list-icon [icon]="menuItem.icon" pull="left"></fa-icon>
+        <div class="menu-item" mat-line>{{ menuItem.label }}</div>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content class="layout-sidenav-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
