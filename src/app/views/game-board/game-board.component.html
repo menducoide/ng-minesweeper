@@ -4,14 +4,17 @@
     <p> Remaining flags: {{remainingFlags}}</p>
   </div>
   <div class="col text-center">
-    <button mat-button [matMenuTriggerFor]="menu">
+    <button mat-button [matMenuTriggerFor]="menu"
+    color="{{ selectedDifficulty.label=='Beginner' ? 'accent' : selectedDifficulty.label=='Medium'? 'primary'  : 'warn' }}"
+
+    >
       {{ selectedDifficulty.label }}
     </button>
     <mat-menu #menu="matMenu">
       <button
         *ngFor="let diff of difficulties"
         (click)="handleOnChangeDifficulty(diff)"
-        mat-menu-item
+         mat-menu-item
       >
         {{ diff.label }}
       </button>
@@ -21,11 +24,16 @@
     <button
       (click)="handleOnClick()"
       mat-fab
-      color="{{ started ? 'primary' : 'accent' }}"
+      color="accent"
     >
-      <mat-icon *ngIf="started">refresh</mat-icon>
-      <mat-icon *ngIf="!started">play_arrow</mat-icon>
-    </button>
+      <mat-icon *ngIf="gameStarted">refresh</mat-icon>
+     </button>
   </div>
 </div>
-<app-board   [gameBoard]="gameBoard" [difficulty]="selectedDifficulty" [cellWidth]="cellWidth" [flags]="remainingFlags" (handleRightClick)="handleRightClick($event)"></app-board>
+<app-board   [gameBoard]="gameBoard" [difficulty]="selectedDifficulty" 
+[cellWidth]="cellWidth" 
+[flags]="remainingFlags"
+[gameStarted]="gameStarted"
+ (handleRightClick)="handleRightClick($event)"
+ (handleClick) ="handleCellClick($event)"
+ ></app-board>
