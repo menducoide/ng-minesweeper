@@ -3,6 +3,10 @@ import { GameBoard } from "src/app/core/models/game-board";
 import { BoardService } from "src/app/core/services/board.service";
 import { Difficulty } from "src/app/core/models/difficulty";
 import { GameCell } from "src/app/core/models/game-cell";
+import { DifficultyService } from "src/app/core/services/difficulty.service";
+import { UserService } from "src/app/core/services/user.service";
+import { MatDialog } from "@angular/material/dialog";
+import { UserFormComponent } from "../user/user-form/user-form.component";
 
 @Component({
   selector: "app-game-board",
@@ -10,7 +14,7 @@ import { GameCell } from "src/app/core/models/game-cell";
   styleUrls: ["./game-board.component.sass"],
 })
 export class GameBoardComponent implements OnInit {
-  constructor(private boardService: BoardService) {}
+  constructor(private boardService: BoardService, private difficultyService: DifficultyService, private userService: UserService,public dialog: MatDialog) {}
   time: number = 0;
   gameStarted: boolean = false;
   gameBoard: GameBoard;
@@ -20,18 +24,17 @@ export class GameBoardComponent implements OnInit {
   cellWidth: string;
   interval;
   ngOnInit(): void {
-    let id = 1;
-    this.difficulties = [
-      { xLenght: 8, yLenght: 8, label: "Beginner", id: id++, mines: 10 },
-      { xLenght: 16, yLenght: 16, label: "Medium", id: id++, mines: 40 },
-      { xLenght: 30, yLenght: 16, label: "Expert", id: id++, mines: 99 },
-    ];
+    this.difficulties = this.difficultyService.getDifficulties();
     this.selectedDifficulty = this.difficulties[0];
     this.gameBoard = this.boardService.generateGameBoard(
       this.selectedDifficulty
     );
     this.cellWidth = this.calculteCellWidth();
     this.remainingFlags = this.selectedDifficulty.mines;
+    let currUser = this.userService.getCurrentUser();
+    if(!currUser){
+      this.openUserDialog();
+    }
   }
 
   handleOnClick = () => {
@@ -99,4 +102,14 @@ export class GameBoardComponent implements OnInit {
   pauseTimer() {
     clearInterval(this.interval);
    }
+
+   openUserDialog(): void {
+    const dialogRef = this.dialog.open(UserFormComponent, {
+      width:'500px',
+      height:"250px"
+     });
+
+    dialogRef.afterClosed().subscribe(result => {
+     });
+  }
 }

@@ -7,4 +7,5 @@ export interface GameBoard {
     end : Date | null;
     win : boolean;
     elapsedTime : number;
+    difficultyId : number;
 }
