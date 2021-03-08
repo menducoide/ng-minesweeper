@@ -3,7 +3,6 @@ import { GameBoard } from "src/app/core/models/game-board";
 import { BoardService } from "src/app/core/services/board.service";
 import { Difficulty } from "src/app/core/models/difficulty";
 import { GameCell } from "src/app/core/models/game-cell";
-import { start } from "node:repl";
 
 @Component({
   selector: "app-game-board",
