@@ -14,13 +14,18 @@ export class BoardComponent implements OnInit {
   @Input() gameBoard: GameBoard;
   @Input() cellWidth: string;
   @Input() flags: number;
+  @Input() gameStarted: boolean = false;
   @Output() handleRightClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() handleClick: EventEmitter<any> = new EventEmitter<any>();
 
   boardWidth: number;
   boardHeight: number;
   constructor() {}
   ngOnInit(): void {}
   onRightClick = (cell) => {
-    this.handleRightClick.emit({cell:cell});
-  }
+    this.handleRightClick.emit({ cell: cell });
+  };
+  onCellClick = (cell) => {
+    this.handleClick.emit({ cell: cell });
+  };
 }

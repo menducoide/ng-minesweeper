@@ -5,4 +5,5 @@ export interface GameCell
     hasFlag : boolean;
     arroundBombs: number;
     selected: boolean;
+    rowId: number;
 }

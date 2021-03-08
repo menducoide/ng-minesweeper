@@ -3,7 +3,8 @@
      <div class="row">
         <div  *ngFor="let cell of row.cells">
             <div class="col m-0 p-0" >                
-                <app-board-cell [flags]="flags" [width]="cellWidth" [height]="cellWidth" [cell]="cell" (handleRightClick)="onRightClick(cell)">
+                <app-board-cell [flags]="flags" [width]="cellWidth" [height]="cellWidth" [cell]="cell" [gameStarted]="gameStarted"
+                (handleRightClick)="onRightClick(cell)" (handleClick)= "onCellClick(cell)">
                 </app-board-cell>
             </div>
         </div>
