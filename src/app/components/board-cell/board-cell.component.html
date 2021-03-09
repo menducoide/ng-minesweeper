@@ -29,18 +29,12 @@
   [styles]="{ stroke: '#69f0ae', color: '#69f0ae' }"
   size="{{ iconSize }}"
 ></fa-icon>
-<!-- <fa-layers [fixedWidth]="true" *ngIf="cell.hasFlag && cell.selected && !cell.hasBomb ">
-    <fa-icon [icon]="faFlag" class="mr-3" transform="shrink-6"   size="{{ iconSize }}"
-    ></fa-icon>
-    <fa-icon [inverse]="true" [icon]="faTimes"   [styles]="{ stroke: 'orange', color: 'orange' }"
-    ></fa-icon>
-</fa-layers> -->
 <fa-icon
 *ngIf="cell.hasFlag && cell.selected && !cell.hasBomb "
 [icon]="faFlag"
  [styles]="{ stroke: 'orange', color: 'orange'}"
 size="{{ iconSize }}"
 ></fa-icon>
-  <label *ngIf="!cell.hasBomb && !cell.hasFlag && cell.selected"  class="{{colorCell}}">
+  <label *ngIf="!cell.hasBomb && !cell.hasFlag && cell.selected" [ngStyle]="{ fontSize:fontSize  }" class="{{colorCell}}">
       {{cell.arroundBombs > 0 ? cell.arroundBombs : ""}}</label>
 </div>

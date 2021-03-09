@@ -13,6 +13,7 @@ export class BoardComponent implements OnInit {
   @Input() difficulty: Difficulty;
   @Input() gameBoard: GameBoard;
   @Input() cellWidth: string;
+  @Input() iconSize: string;
   @Input() flags: number;
   @Input() gameStarted: boolean = false;
   @Output() handleRightClick: EventEmitter<any> = new EventEmitter<any>();

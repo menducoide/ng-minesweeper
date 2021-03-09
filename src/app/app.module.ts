@@ -12,7 +12,10 @@ import { BoardComponent } from "./components/board/board.component";
 import { BoardCellComponent } from "./components/board-cell/board-cell.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { UserFormComponent } from "./views/user/user-form/user-form.component";
-import { UserStatisticsComponent } from "./views/user/user-statistics/user-statistics.component";
+import { UserAnalyticsComponent } from './views/user/user-analytics/user-analytics.component';
+import { NotifyComponent } from './components/notify/notify.component';
+import { TableComponent } from './components/table/table.component';
+import { DatePipe } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { UserStatisticsComponent } from "./views/user/user-statistics/user-stati
     BoardComponent,
     BoardCellComponent,
     UserFormComponent,
-    UserStatisticsComponent,
+    UserAnalyticsComponent,
+    NotifyComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,7 @@ import { UserStatisticsComponent } from "./views/user/user-statistics/user-stati
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [ DatePipe,],
   bootstrap: [AppComponent],
  })
 export class AppModule {}
