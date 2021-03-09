@@ -19,15 +19,9 @@ export class BoardService {
       if(!cell || cell.id != random) {
         randomMines.add(random);
       }
-    }
-
-    // let randomMines: number[] = Array.from(
-    //   { length: difficulty.mines },
-    //   (_, i) => Math.floor(Math.random() * totalCells)
-    // );
+    } 
     let currentCell = 0;
-    console.log(randomMines);
-    for (let i = 0; i < difficulty.yLenght; i++) {
+     for (let i = 0; i < difficulty.yLenght; i++) {
       let cells: GameCell[] = new Array<GameCell>();
       for (let j = 0; j < difficulty.xLenght; j++) {
         let cell: GameCell = {
@@ -211,5 +205,66 @@ export class BoardService {
       return row;
     });
     return board;
+  }
+
+  public getArroundCells(cell: GameCell, board: GameBoard): GameCell[] {
+    let i = cell.rowId;
+    let j = cell.id;
+    let cells = new Array<GameCell>();    
+    let yLenght = board.rows.length;
+    let xLenght = board.rows[0].cells.length;
+    if (i == 0 && j == 0) {
+      cells.push(board.rows[i + 1].cells[j])
+      cells.push(board.rows[i + 1].cells[j + 1] )
+      cells.push(board.rows[i].cells[j + 1])
+    } else if (i == 0 && j < xLenght - 1) {
+      cells.push(board.rows[i].cells[j - 1])
+      cells.push(board.rows[i].cells[j + 1])
+      cells.push(board.rows[i + 1].cells[j - 1])
+      cells.push(board.rows[i + 1].cells[j])
+      cells.push(board.rows[i + 1].cells[j + 1])
+    } else if (i == 0 && j == xLenght - 1) {
+      cells.push(board.rows[i + 1].cells[j])
+      cells.push(board.rows[i + 1].cells[j - 1])
+      cells.push(board.rows[i].cells[j - 1])
+    } else if (i > 0 && i < yLenght - 1 && j == 0) {
+      cells.push(board.rows[i - 1].cells[j])
+      cells.push(board.rows[i - 1].cells[j + 1])
+      cells.push(board.rows[i].cells[j + 1])
+      cells.push(board.rows[i + 1].cells[j])
+      cells.push(board.rows[i + 1].cells[j + 1])
+     } else if (i > 0 && i < yLenght - 1 && j < xLenght - 1) {
+      cells.push(board.rows[i - 1].cells[j - 1])
+      cells.push(board.rows[i - 1].cells[j])
+      cells.push(board.rows[i - 1].cells[j + 1])
+ 
+      cells.push(board.rows[i].cells[j - 1])
+      cells.push(board.rows[i].cells[j + 1])
+      cells.push(board.rows[i + 1].cells[j - 1])
+      cells.push(board.rows[i + 1].cells[j])
+      cells.push(board.rows[i + 1].cells[j + 1])
+    } else if (i > 0 && i < yLenght - 1 && j == xLenght - 1) {
+      cells.push(board.rows[i - 1].cells[j])
+      cells.push(board.rows[i - 1].cells[j - 1])
+      cells.push(board.rows[i].cells[j - 1])
+      cells.push(board.rows[i + 1].cells[j])
+      cells.push(board.rows[i + 1].cells[j - 1])
+    }
+    if (i == yLenght - 1 && j == 0) {
+      cells.push(board.rows[i - 1].cells[j])
+      cells.push(board.rows[i - 1].cells[j + 1])
+      cells.push(board.rows[i].cells[j + 1])
+    } else if (i == yLenght - 1 && j < xLenght - 1) {
+      cells.push(board.rows[i - 1].cells[j - 1])
+      cells.push(board.rows[i - 1].cells[j])
+      cells.push(board.rows[i - 1].cells[j + 1])
+      cells.push(board.rows[i].cells[j - 1])
+      cells.push(board.rows[i].cells[j + 1])
+    } else if (i == yLenght - 1 && j == xLenght - 1) {
+      cells.push(board.rows[i - 1].cells[j])
+      cells.push(board.rows[i - 1].cells[j - 1])
+      cells.push(board.rows[i].cells[j - 1])
+    }
+    return cells;
   }
 }

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { TableComponent } from './table.component';
 
@@ -8,6 +9,7 @@ describe('TableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports : [ SharedModule],
       declarations: [ TableComponent ]
     })
     .compileComponents();

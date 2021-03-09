@@ -13,4 +13,8 @@ describe('DifficultyService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should return a list of difficulties', () => {
+    expect(service.getDifficulties().some(s=>s)).toBeTrue();
+  });
 });
