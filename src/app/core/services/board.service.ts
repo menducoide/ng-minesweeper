@@ -117,6 +117,7 @@ export class BoardService {
       end: null,
       win: false,
       elapsedTime: 0,
+      difficulty : difficulty
     };
   }
 

@@ -11,7 +11,7 @@ export class BoardCellComponent implements OnInit {
   @Input() width: string;
   @Input() height: string;
   @Input() cell: GameCell;
-  @Input() iconSize: string = "2x";
+  @Input() iconSize: string ;
   @Input() gameEnded: boolean = false;
   @Input() gameStarted: boolean = false;
   @Output() handleRightClick: EventEmitter<any> = new EventEmitter<any>();
@@ -22,10 +22,12 @@ export class BoardCellComponent implements OnInit {
   faCheck = faCheck;
   faTimes= faTimes;
   colorCell = "";
+  fontSize = ""
   constructor() {}
   ngOnInit(): void {
     if (this.cell) {
       this.colorCell = "arround-" + this.cell.arroundBombs;
+      this.fontSize = (Number(this.height.replace("px","")) / 2) + "px";
     }
   }
   onCellClick = (e) => {

@@ -1,0 +1,19 @@
+<div>
+  <h1 mat-dialog-title class="text-center">Welcome to Minesweeper!</h1>
+  <div mat-dialog-content>
+       <mat-form-field appearance="fill " [formGroup]="formGroup" class="w-100 text-center">
+
+           <mat-label class="text-white">Enter your user name</mat-label>
+          <input matInput type="text" placeholder="User name" formControlName="userName" required > 
+         <div class="col-lg-12 col-md-12 col-sm-12">
+          <mat-error *ngIf="errors.userName">{{errors.userName}}</mat-error>
+        </div>
+      </mat-form-field>
+      <div class="text-center">
+        <button mat-button color="accent" (click)="onSave()">
+          <fa-icon [icon]="faCheck" class="mr-2"></fa-icon>
+          Save
+        </button>
+      </div>
+   </div>  
+</div>
